@@ -1,0 +1,96 @@
+/*
+* @Author: Aleksiej Kuncewicz
+* @Date:   2021-08-11 11:09:48
+* @Last Modified by:   Aleksiej Kuncewicz
+* @Last Modified time: 2021-08-11 13:54:49
+*/
+
+.footer-container {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  display: flex;
+  justify-content: space-around;
+  width: 100%;
+  padding: 80px 0;
+  background:  linear-gradient(
+    180deg,
+    map-get(map-get($mainPalette, blue), dark) 0%,
+    map-get(map-get($mainPalette, blue), light) 100%
+  );
+
+  @include tablet {
+    padding: 60px 0;
+  }
+
+  .footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    width: 60%;
+    height: 100%;
+
+    @include tablet {
+      width: 87.3%;
+    }
+
+    .footer-info {
+      .footer-info__title {
+        font-size: 20px;
+        font-weight: 500;
+        line-height: 23px;
+        text-transform: uppercase;
+        color: map-get($mainPalette, white);
+      }
+
+      .footer-info__content {
+        margin-top: 30px;
+
+        .footer-info__content-links {
+          display: flex;
+          flex-direction: column;
+
+          .footer-info__content-link {
+            display: flex;
+            align-items: center;
+
+            &:not(:last-child) {
+              margin-bottom: 30px;
+            }
+
+            .footer-info__content-link__icon {
+              display: flex;
+              align-items: center;
+              margin-right: 16px;
+              color: map-get($mainPalette, white);
+            }
+
+            .footer-info__content-link__name {
+              font-size: 16px;
+              font-weight: normal;
+              line-height: 19px;
+              color: map-get($mainPalette, white);
+
+
+              &.footer-info__content-link__name--capitalized {
+                text-transform: capitalize;
+              }
+            }
+          }
+        }
+
+        .footer-info__content-socials {
+          margin-top: 30px;
+
+          .footer-info__content-social {
+            color: map-get($mainPalette, white);
+
+            &:not(:last-child) {
+              margin-right: 30px;
+            }
+          }
+        }
+      }
+    }
+  }
+}

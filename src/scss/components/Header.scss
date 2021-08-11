@@ -1,0 +1,137 @@
+/*
+* @Author: Aleksiej Kuncewicz
+* @Date:   2021-08-11 10:09:23
+* @Last Modified by:   Aleksiej Kuncewicz
+* @Last Modified time: 2021-08-11 15:58:05
+*/
+
+.header-container {
+  display: flex;
+  justify-content: space-around;
+  width: 100%;
+  height: 100px;
+  background-color: map-get(map-get($mainPalette, blue), dark);
+
+  @include tablet {
+    height: 90px;
+  }
+
+  @include mobile {
+    height: 80px;
+  }
+
+  .header {
+    width: 60%;
+    height: 100%;
+  }
+
+  .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    .header__left,
+    .header__right {
+      display: flex;
+      align-items: center;
+    }
+
+    .header__logo {
+      display: flex;
+      align-items: center;
+      padding: 6px 0;
+
+      .header__logo-link {
+        font-size: 20px;
+        font-weight: 700;
+        line-height: 23px;
+        text-transform: uppercase;
+        color: map-get($mainPalette, white);
+      }
+    }
+
+    .header__menu {
+      display: flex;
+      align-items: center;
+
+      .header__menu-item {
+        font-size: 16px;
+        line-height: 19px;
+        text-transform: capitalize;
+        color: map-get($mainPalette, white);
+        cursor: pointer;
+
+        &:not(:last-child) {
+          margin-right: 50px;
+        }
+      }
+    }
+
+    .header__logo,
+    .header__toggle-menu {
+      &::after {
+        content: '';
+        display: inline-block;
+        height: 40px;
+        width: 1px;
+        margin: 0 30px;
+        background-color: map-get($mainPalette, white);
+      }
+    }
+
+    .header__toggle-menu {
+      position: relative;
+      display: flex;
+      align-items: center;
+
+      .header__toggle-menu-title {
+        display: flex;
+        align-items: center;
+        color: map-get($mainPalette, white);
+        cursor: pointer;
+
+        .header__toggle-menu-title--name {
+          margin-right: 5px;
+          font-size: 16px;
+          line-height: 19px;
+          text-transform: capitalize;
+        }
+      }
+
+      .header__toggle-menu-items {
+        position: absolute;
+        bottom: -160px;
+        right: 60px;
+        width: 100%;
+        padding: 12px;
+        background-color: map-get($mainPalette, white);
+        border: 1px solid map-get(map-get($mainPalette, blue), dark);
+        border-radius: 3px;
+
+        .header__toggle-menu-item {
+          padding: 6px 0;
+          font-size: 16px;
+          line-height: 19px;
+          color: map-get(map-get($mainPalette, blue), dark);
+          text-transform: capitalize;
+          cursor: pointer;
+        }
+      }
+    }
+
+    .header__icons {
+      display: flex;
+      align-items: center;
+
+      .header__icon {
+        display: inline-block;
+        color: map-get($mainPalette, white);
+        cursor: pointer;
+
+        &:not(:last-child) {
+          margin-right: 36px;
+        }
+      }
+    }
+  }
+}
