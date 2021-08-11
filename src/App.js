@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import { Route, BrowserRouter as Router, Switch, Redirect } from 'react-router-dom';
+import Footer from './components/layout/Footer';
+import Header from './components/layout/Header';
 import Product from './components/view/Product';
 
 class App extends Component {
@@ -9,6 +11,7 @@ class App extends Component {
   render() {
     return (
       <Router>
+        <Header />
         <Switch>
           <Route exact path="/">
             <Redirect to="product" />
@@ -19,6 +22,7 @@ class App extends Component {
           {/* <Route exact path="/order" component={Order} />
           <Route component={NotFound} /> */}
         </Switch>
+        <Footer />
       </Router>
     );
   }

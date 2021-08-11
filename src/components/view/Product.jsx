@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import Header from '../layout/Header';
-import Footer from '../layout/Footer';
+// import Header from '../layout/Header';
+// import Footer from '../layout/Footer';
+import NavBar from '../layout/NavBar';
 // import * as Constants from '../../lib/constants';
 import { LocationService } from '../../services/LocationService';
 import { NavigationService } from '../../services/NavigationService';
@@ -20,8 +21,9 @@ class Snap extends Component {
   render() {
     return (
       <>
-        <Header history={this.props.history} />
-        <Footer />
+        {/*<Header history={this.props.history} />
+        <Footer />*/}
+        <NavBar />
       </>
     );
   }

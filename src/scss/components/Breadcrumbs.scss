@@ -1,0 +1,60 @@
+/*
+* @Author: Aleksiej Kuncewicz
+* @Date:   2021-08-11 22:02:22
+* @Last Modified by:   Aleksiej Kuncewicz
+* @Last Modified time: 2021-08-11 23:25:16
+*/
+
+.breadcrumbs {
+  display: flex;
+  align-items: center;
+
+  .breadcrumb {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+
+    &:not(:last-child) {
+      margin-right: 20px;
+
+      @include tablet {
+        margin-right: 10px;
+      }
+    }
+
+    &:last-child {
+      .breadcrumb__arrow {
+        display: none;
+      }
+    }
+
+    &.breadcrumb--active {
+      .breadcrumb__name,
+      .breadcrumb__arrow {
+        opacity: 1;
+      }
+    }
+
+    .breadcrumb__name,
+    .breadcrumb__arrow {
+      color: map-get($mainPalette, gray);
+      opacity: 0.4;
+    }
+
+    .breadcrumb__name {
+      font-size: 12px;
+      line-height: 14px;
+      white-space: nowrap;
+
+      @include tablet {
+        font-size: 10px;
+        line-height: 12px;
+        letter-spacing: -0.05em;
+      }
+    }
+
+    .breadcrumb__arrow {
+      margin-left: 2px;
+    }
+  }
+}

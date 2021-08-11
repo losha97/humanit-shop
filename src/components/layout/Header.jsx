@@ -1,10 +1,10 @@
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { LocationService } from '../../services/LocationService';
-import { NavigationService } from '../../services/NavigationService';
+// import { LocationService } from '../../services/LocationService';
+// import { NavigationService } from '../../services/NavigationService';
 
-class Header extends Component {
+class Header extends PureComponent {
   state = {
     navigation: [{
       label: "categories"
@@ -25,9 +25,6 @@ class Header extends Component {
     isActiveToggleMenu: false,
     toggleMenuValue: 'catalog'
   };
-
-  componentDidMount() {
-  }
 
   handleToggleMenu = () => {
     this.setState({isActiveToggleMenu: !this.state.isActiveToggleMenu});
@@ -108,7 +105,7 @@ class Header extends Component {
 }
 
 Header.propTypes = {
-  history: PropTypes.any.isRequired
+  history: PropTypes.any
 };
 
 export default Header;

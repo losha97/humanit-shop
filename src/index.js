@@ -5,8 +5,6 @@ import './fontawesome';
 import './scss/App.scss';
 
 ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
-  document.getElementById('root')
+  <App />,
+  document.getElementById('humanit-shop')
 );

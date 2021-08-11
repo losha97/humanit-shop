@@ -1,8 +1,6 @@
 import React, { PureComponent } from 'react';
 import classNames from 'classnames';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { LocationService } from '../../services/LocationService';
-import { NavigationService } from '../../services/NavigationService';
 
 class Footer extends PureComponent {
   state = {
@@ -62,9 +60,6 @@ class Footer extends PureComponent {
       }]
     }]
   };
-
-  componentDidMount() {
-  }
 
   render() {
     return (

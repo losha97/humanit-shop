@@ -2,13 +2,16 @@ import { library } from '@fortawesome/fontawesome-svg-core';
 
 import {
   faBars,
+  faCaretRight,
   faChevronDown,
   faChevronUp,
   faEnvelope,
   faHeart,
   faMapMarkerAlt,
   faPhoneAlt,
+  faSearch,
   faShoppingCart,
+  faTruck,
   faUser
 } from '@fortawesome/free-solid-svg-icons';
 
@@ -21,6 +24,7 @@ import {
 
 library.add(
   faBars,
+  faCaretRight,
   faChevronDown,
   faChevronUp,
   faEnvelope,
@@ -30,7 +34,9 @@ library.add(
   faHeart,
   faMapMarkerAlt,
   faPhoneAlt,
+  faSearch,
   faShoppingCart,
+  faTruck,
   faTwitter,
   faUser
 );
