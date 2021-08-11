@@ -34,7 +34,7 @@ class Header extends Component {
   }
 
   setToggleMenuValue = toggleMenuValue => {
-    this.setState({toggleMenuValue: toggleMenuValue})
+    this.setState({toggleMenuValue: toggleMenuValue}, this.handleToggleMenu)
   }
 
   render() {
@@ -67,6 +67,11 @@ class Header extends Component {
                 <span className="header__toggle-menu-title--name">{this.state.toggleMenuValue}</span>
                 <FontAwesomeIcon icon={this.state.isActiveToggleMenu ? "chevron-up" : "chevron-down"} />
               </div>
+              <FontAwesomeIcon
+                icon="bars"
+                className="header__toggle-menu-icon"
+                onClick={this.handleToggleMenu}
+              />
               {this.state.isActiveToggleMenu && (
                 <ul className="header__toggle-menu-items">
                   {this.state.navigation.map((item, itemIndex) => {

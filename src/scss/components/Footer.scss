@@ -2,7 +2,7 @@
 * @Author: Aleksiej Kuncewicz
 * @Date:   2021-08-11 11:09:48
 * @Last Modified by:   Aleksiej Kuncewicz
-* @Last Modified time: 2021-08-11 13:54:49
+* @Last Modified time: 2021-08-11 21:32:15
 */
 
 .footer-container {
@@ -23,6 +23,10 @@
     padding: 60px 0;
   }
 
+  @include mobile {
+    padding: 60px 0 100px;
+  }
+
   .footer {
     display: flex;
     justify-content: space-between;
@@ -34,21 +38,54 @@
       width: 87.3%;
     }
 
+    @include mobile {
+      padding-bottom: 10px;
+      border-bottom: 1px solid map-get($mainPalette, white);
+    }
+
+    @include mobile {
+      position: relative;
+      width: 91.7%;
+      flex-direction: column;
+      align-items: center;
+    }
+
     .footer-info {
+      @include mobile {
+        width: 100%;
+      }
+
       .footer-info__title {
         font-size: 20px;
         font-weight: 500;
         line-height: 23px;
         text-transform: uppercase;
         color: map-get($mainPalette, white);
+
+        @include mobile {
+          display: inline-flex;
+          justify-content: center;
+          align-items: center;
+          width: 100%;
+          font-size: 24px;
+          line-height: 28px;
+        }
       }
 
       .footer-info__content {
         margin-top: 30px;
 
+        @include mobile {
+          margin-top: 40px;
+        }
+
         .footer-info__content-links {
           display: flex;
           flex-direction: column;
+
+          @include mobile {
+            display: none;
+          }
 
           .footer-info__content-link {
             display: flex;
@@ -81,6 +118,16 @@
 
         .footer-info__content-socials {
           margin-top: 30px;
+
+          @include mobile {
+            position: absolute;
+            bottom: -60px;
+            left: 0;
+            width: 100%;
+            margin-top: 0;
+            display: flex;
+            justify-content: center;
+          }
 
           .footer-info__content-social {
             color: map-get($mainPalette, white);

@@ -2,7 +2,7 @@
 * @Author: Aleksiej Kuncewicz
 * @Date:   2021-08-11 10:09:23
 * @Last Modified by:   Aleksiej Kuncewicz
-* @Last Modified time: 2021-08-11 15:58:05
+* @Last Modified time: 2021-08-11 21:47:30
 */
 
 .header-container {
@@ -21,14 +21,19 @@
   }
 
   .header {
-    width: 60%;
-    height: 100%;
-  }
-
-  .header {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    width: 60%;
+    height: 100%;
+
+    @include tablet {
+      width: 87.3%;
+    }
+
+    @include mobile {
+      width: 91.7%;
+    }
 
     .header__left,
     .header__right {
@@ -40,6 +45,16 @@
       display: flex;
       align-items: center;
       padding: 6px 0;
+
+      &::after {
+        @include tablet {
+          display: none !important;
+        }
+
+        @include mobile {
+          display: none !important;
+        }
+      }
 
       .header__logo-link {
         font-size: 20px;
@@ -53,6 +68,14 @@
     .header__menu {
       display: flex;
       align-items: center;
+
+      @include tablet {
+        display: none;
+      }
+
+      @include mobile {
+        display: none;
+      }
 
       .header__menu-item {
         font-size: 16px;
@@ -76,6 +99,10 @@
         width: 1px;
         margin: 0 30px;
         background-color: map-get($mainPalette, white);
+
+        @include mobile {
+          display: none;
+        }
       }
     }
 
@@ -85,6 +112,14 @@
       align-items: center;
 
       .header__toggle-menu-title {
+        @include tablet {
+          display: none;
+        }
+
+        @include mobile {
+          display: none;
+        }
+
         display: flex;
         align-items: center;
         color: map-get($mainPalette, white);
@@ -98,6 +133,20 @@
         }
       }
 
+      .header__toggle-menu-icon {
+        display: none;
+        color: map-get($mainPalette, white);
+        cursor: pointer;
+
+        @include tablet {
+          display: inline-block;
+        }
+
+        @include mobile {
+          display: inline-block;
+        }
+      }
+
       .header__toggle-menu-items {
         position: absolute;
         bottom: -160px;
@@ -108,6 +157,18 @@
         border: 1px solid map-get(map-get($mainPalette, blue), dark);
         border-radius: 3px;
 
+        @include mobile {
+          position: fixed;
+          top: 0;
+          bottom: 0;
+          left: 0;
+          right: 0;
+          z-index: 1;
+          border: none;
+          border-radius: 0;
+          background-color: map-get(map-get($mainPalette, blue), dark);
+        }
+
         .header__toggle-menu-item {
           padding: 6px 0;
           font-size: 16px;
@@ -115,6 +176,10 @@
           color: map-get(map-get($mainPalette, blue), dark);
           text-transform: capitalize;
           cursor: pointer;
+
+          @include mobile {
+            color: map-get($mainPalette, white);
+          }
         }
       }
     }
@@ -122,6 +187,10 @@
     .header__icons {
       display: flex;
       align-items: center;
+
+      @include mobile {
+        display: none;
+      }
 
       .header__icon {
         display: inline-block;
