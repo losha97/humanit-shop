@@ -2,7 +2,7 @@
 * @Author: Aleksiej Kuncewicz
 * @Date:   2021-08-12 04:12:57
 * @Last Modified by:   Aleksiej Kuncewicz
-* @Last Modified time: 2021-08-12 19:32:00
+* @Last Modified time: 2021-08-12 21:11:34
 */
 
 .basket {
@@ -10,24 +10,54 @@
   justify-content: space-between;
   width: 100%;
 
+  @include mobile {
+    flex-direction: column;
+  }
+
   .basket__list {
     width: calc(60% - 15px);
+
+    @include tablet {
+      width: calc(60% - 10px);
+    }
+
+    @include mobile {
+      width: 100%;
+    }
   }
 
   .basket__details {
     width: calc(30% - 15px);
+
+    @include tablet {
+      width: calc(30% - 10px);
+    }
+
+    @include mobile {
+      width: 100%;
+      margin-top: 10px;
+    }
   }
 }
 
 .basket-product {
+  position: relative;
   display: flex;
   justify-content: space-between;
   align-items: center;
   width: 100%;
   padding: 25px;
 
+  @include mobile {
+    padding: 15px;
+  }
+
   &:not(:last-child) {
     margin-bottom: 30px;
+
+    @include mobile {
+      margin-bottom: 10px;
+    }
   }
 
   .basket-product__pic {
@@ -41,7 +71,34 @@
   }
 
   .basket-product__name {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    align-items: flex-start;
+  }
 
+  .basket-product__additional-info {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    @include tablet {
+      position: absolute;
+      left: 0;
+      bottom: -60px;
+      z-index: 1;
+      width: calc(100% - 30px);
+      padding: 10px 15px;
+      background-color: map-get(map-get($mainPalette, blue), dark);
+    }
+
+    @include mobile {
+      position: absolute;
+      left: 0;
+      width: calc(100% - 30px);
+      padding: 10px 15px;
+      background-color: map-get(map-get($mainPalette, blue), dark);
+    }
   }
 
   .basket-product__date {
@@ -50,11 +107,33 @@
     justify-content: space-between;
     font-size: 16px;
     line-height: 19px;
-    color: map-get($mainPalette, gray);
 
-    &:first-child {
-      opacity: 0.4;
-      margin-bottom: 7px;
+    span {
+      &:first-child {
+        opacity: 0.4;
+        margin-bottom: 7px;
+      }
+
+      @include tablet {
+        color: map-get($mainPalette, white);
+
+        &:first-child {
+          opacity: 0.7;
+        }
+
+        &:last-child {
+          font-size: 10px;
+          line-height: 12px;
+        }
+      }
+
+      @include mobile {
+        color: map-get($mainPalette, white);
+        &:last-child {
+          font-size: 10px;
+          line-height: 12px;
+        }
+      }
     }
   }
 
@@ -68,8 +147,24 @@
       background-color: map-get(map-get($mainPalette, blue), dark);
       cursor: pointer;
 
+      @include tablet {
+        background-color: map-get($mainPalette, white);
+      }
+
+      @include mobile {
+        background-color: map-get($mainPalette, white);
+      }
+
       svg {
         color: map-get($mainPalette, white);
+
+        @include tablet {
+          color: map-get(map-get($mainPalette, blue), dark);
+        }
+
+        @include mobile {
+          color: map-get(map-get($mainPalette, blue), dark);
+        }
       }
     }
 
@@ -78,14 +173,74 @@
       font-size: 16px;
       line-height: 19px;
       color: map-get($mainPalette, gray);
+
+      @include tablet {
+        color: map-get($mainPalette, white);
+      }
+
+      @include mobile {
+        color: map-get($mainPalette, white);
+      }
     }
   }
 
   .basket-product__total {
+    display: flex;
+    align-items: center;
 
+    @include tablet {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+
+    @include mobile {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+
+    .backet__title {
+      &::after {
+        content: " amount";
+      }
+
+      @include tablet {
+        font-size: 14px;
+        line-height: 16px;
+        color: map-get($mainPalette, white);
+
+        &::after {
+          content: "";
+        }
+      }
+
+      @include mobile {
+        font-size: 14px;
+        line-height: 16px;
+        color: map-get($mainPalette, white);
+
+        &::after {
+          content: "";
+        }
+      }
+    }
+
+    .backet__value {
+      @include tablet {
+        font-size: 16px;
+        line-height: 19px;
+        color: map-get($mainPalette, white);
+      }
+
+      @include mobile {
+        font-size: 16px;
+        line-height: 19px;
+        color: map-get($mainPalette, white);
+      }
+    }
   }
 
-  .basket-product__remove {
+  .basket-product__remove,
+  .basket-product__arrow {
     display: flex;
     align-items: center;
     padding: 6px 8.5px;
@@ -94,6 +249,18 @@
 
     svg {
       color: map-get($mainPalette, white);
+    }
+  }
+
+  .basket-product__arrow {
+    display: none;
+
+    @include tablet {
+      display: inline-block;
+    }
+
+    @include mobile {
+      display: inline-block;
     }
   }
 
