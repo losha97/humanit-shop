@@ -2,8 +2,6 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { LocationService } from '../../services/LocationService';
-import { NavigationService } from '../../services/NavigationService';
 
 class Breadcrumbs extends Component {
   state = {

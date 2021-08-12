@@ -1,8 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { LocationService } from '../../services/LocationService';
-import { NavigationService } from '../../services/NavigationService';
 import Breadcrumbs from '../common/Breadcrumbs';
 
 class NavBar extends Component {
@@ -25,19 +23,17 @@ class NavBar extends Component {
   render() {
     return (
       <section className="navbar-container">
-        <div className="navbar">
-          <Breadcrumbs breadcrumbs={this.state.breadcrumbs} />
-          <div className="navbar__search">
-            <input
-              placeholder="Product name"
-              className="navbar__search__input"
-            />
-            <FontAwesomeIcon icon="search" className="navbar__search__icon" />
-          </div>
-          <div className="navbar__delivery">
-            <span className="navbar__delivery__title">Delivery service</span>
-            <FontAwesomeIcon icon="truck" className="navbar__delivery__icon" />
-          </div>
+        <Breadcrumbs breadcrumbs={this.state.breadcrumbs} />
+        <div className="navbar__search">
+          <input
+            placeholder="Product name"
+            className="navbar__search__input container-shadow"
+          />
+          <FontAwesomeIcon icon="search" className="navbar__search__icon" />
+        </div>
+        <div className="navbar__delivery">
+          <span className="navbar__delivery__title">Delivery service</span>
+          <FontAwesomeIcon icon="truck" className="navbar__delivery__icon" />
         </div>
       </section>
     );

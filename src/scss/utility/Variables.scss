@@ -2,7 +2,7 @@
 * @Author: Aleksiej Kuncewicz
 * @Date:   2021-08-11 10:11:40
 * @Last Modified by:   Aleksiej Kuncewicz
-* @Last Modified time: 2021-08-11 22:15:08
+* @Last Modified time: 2021-08-12 01:23:58
 */
 
 /*
@@ -20,10 +20,12 @@ $roboto: 'Roboto', sans-serif;
 * Colors
 */
 $mainPalette: (
+  black: #000000,
   blue: (
     dark: #287194,
     light: #0F435B
   ),
-  white: #ffffff,
-  gray: #5C5C5C
+  gray: #5C5C5C,
+  green: #328863,
+  white: #ffffff
 );

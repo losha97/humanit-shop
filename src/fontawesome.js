@@ -11,6 +11,7 @@ import {
   faPhoneAlt,
   faSearch,
   faShoppingCart,
+  faStar,
   faTruck,
   faUser
 } from '@fortawesome/free-solid-svg-icons';
@@ -36,6 +37,7 @@ library.add(
   faPhoneAlt,
   faSearch,
   faShoppingCart,
+  faStar,
   faTruck,
   faTwitter,
   faUser
