@@ -47,9 +47,10 @@ class Product extends Component {
     };
 
     const index = this.getProductIndexFromBasket(basketProducts, product);
-    
+
     if (index > -1) {
       basketProducts[index].count++; 
+      basketProducts[index].addedDate = this.getCurretDate();
     } else {
       basketProducts.push(product);
     }
@@ -190,7 +191,7 @@ class Product extends Component {
                           <Checkbox
                             key={checkboxIndex}
                             label={checkbox}
-                            value-={this.state.paymentMethod}
+                            value={this.state.paymentMethod}
                             handleCheckboxChange={this.togglePaymentMethodCheckbox}
                           />
                         );
@@ -205,7 +206,7 @@ class Product extends Component {
                           <Checkbox
                             key={checkboxIndex}
                             label={checkbox}
-                            value-={this.state.deliveryService}
+                            value={this.state.deliveryService}
                             handleCheckboxChange={this.toggleDeliveryServiceCheckbox}
                           />
                         );
