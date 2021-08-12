@@ -1,6 +1,10 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { BasketService } from '../../services/BasketService';
+import { LocationService } from '../../services/LocationService';
+import { NavigationService } from '../../services/NavigationService';
+import Checkbox from '../element/Checkbox';
 
 class Product extends Component {
   state = {
@@ -13,11 +17,53 @@ class Product extends Component {
     deliveryCheckboxes: [
       "Delivery",
       "Self-export"
-    ]
+    ],
+    paymentMethod: null,
+    deliveryService: null
   };
 
   componentDidMount() {
     this.setProduct(this.props.product);
+  }
+
+  componentDidUpdate(prevProps) {
+    if (prevProps.product !== this.props.product) {
+      this.setProduct(this.props.product);
+    }
+  }
+
+  addProduct = () => {
+    let basketProducts = BasketService.getProducts() || [];
+    let product = {
+      name: this.state.product.name,
+      url: this.state.product.url,
+      paymentMethod: this.state.paymentMethod,
+      deliveryService: this.state.deliveryService,
+      addedDate: this.getCurretDate(),
+      count: 1,
+      price: this.state.product.discountPrice || this.state.product.price,
+      totalPrice: this.state.product.discountPrice || this.state.product.price
+    };
+
+    basketProducts.push(product);
+
+    BasketService.setProducts(basketProducts);
+  }
+
+  getCurretDate = () => {
+    let today = new Date();
+    const dd = String(today.getDate()).padStart(2, '0');
+    const mm = String(today.getMonth() + 1).padStart(2, '0');
+    const yyyy = today.getFullYear();
+
+
+    today = dd + '.' + mm + '.' + yyyy;
+    return today;
+
+  }
+
+  orderProducts = () => {
+    return LocationService.setLocation(NavigationService.basketLink());
   }
 
   setProduct = product => {
@@ -28,6 +74,14 @@ class Product extends Component {
     return {
       backgroundColor: color
     }
+  }
+
+  togglePaymentMethodCheckbox = label => {
+    this.setState({paymentMethod: label});
+  }
+
+  toggleDeliveryServiceCheckbox = label => {
+    this.setState({deliveryService: label});
   }
 
   render() {
@@ -65,7 +119,7 @@ class Product extends Component {
                     <span className="product__pic__main-title__discount-price">{this.state.product.discountPrice}</span>
                     <span className="product__pic__main-title__price">{this.state.product.price}</span>
                   </div>
-                  <img src={this.state.product.pic} alt="" className="product__pic__main-src" />
+                  <img src={this.state.product.url} alt="" className="product__pic__main-src" />
                 </div>
               </div>
               <div className="product__additional-pics">
@@ -75,7 +129,7 @@ class Product extends Component {
                       key={picIndex}
                       className="product__additional-pic product-container container-shadow"
                     >
-                      <img src={this.state.product.pic} alt="" className="product__additional-pic-src" />
+                      <img src={this.state.product.url} alt="" className="product__additional-pic-src" />
                     </div>
                   );
                 })}
@@ -118,10 +172,12 @@ class Product extends Component {
                     <div className="product__price__checkbox-row-content">
                       {this.state.paymentCheckboxes.map((checkbox, checkboxIndex) => {
                         return (
-                          <span key={checkboxIndex} className="product__price__checkbox-row-content__item">
-                            <input type="checkbox" id={checkbox} />
-                            <label htmlFor={checkbox}>{checkbox}</label>
-                          </span>
+                          <Checkbox
+                            key={checkboxIndex}
+                            label={checkbox}
+                            value-={this.state.paymentMethod}
+                            handleCheckboxChange={this.togglePaymentMethodCheckbox}
+                          />
                         );
                       })}
                     </div>
@@ -131,18 +187,20 @@ class Product extends Component {
                     <div className="product__price__checkbox-row-content">
                       {this.state.deliveryCheckboxes.map((checkbox, checkboxIndex) => {
                         return (
-                          <span key={checkboxIndex} className="product__price__checkbox-row-content__item">
-                            <input type="checkbox" id={checkbox} />
-                            <label htmlFor={checkbox}>{checkbox}</label>
-                          </span>
+                          <Checkbox
+                            key={checkboxIndex}
+                            label={checkbox}
+                            value-={this.state.deliveryService}
+                            handleCheckboxChange={this.toggleDeliveryServiceCheckbox}
+                          />
                         );
                       })}
                     </div>
                   </div>
                 </div>
                 <div className="product__price__actions">
-                  <button className="product__price__action-btn">add to basket</button>
-                  <button className="product__price__action-btn product__price__action-btn--inverse">Make an order</button>
+                  <button className="product__price__action-btn" onClick={this.addProduct}>add to basket</button>
+                  <button className="product__price__action-btn product__price__action-btn--inverse" onClick={this.orderProducts}>Make an order</button>
                 </div>
               </div>
             </section>

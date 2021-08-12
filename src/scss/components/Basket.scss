@@ -1,0 +1,113 @@
+/*
+* @Author: Aleksiej Kuncewicz
+* @Date:   2021-08-12 04:12:57
+* @Last Modified by:   Aleksiej Kuncewicz
+* @Last Modified time: 2021-08-12 06:12:44
+*/
+
+.basket {
+  display: flex;
+  width: 100%;
+
+  .basket__list {
+    width: 60%;
+    margin-right: 30px;
+  }
+
+  .basket__details {
+    width: 30%;
+  }
+}
+
+.basket-product {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  padding: 25px;
+
+  &:not(:last-child) {
+    margin-bottom: 30px;
+  }
+
+  .basket-product__pic {
+    width: 60px;
+    height: 60px;
+
+    img {
+      width: 100%;
+      height: 100%;
+    }
+  }
+
+  .basket-product__name {
+
+  }
+
+  .basket-product__date {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    font-size: 16px;
+    line-height: 19px;
+    color: map-get($mainPalette, gray);
+
+    &:first-child {
+      opacity: 0.4;
+      margin-bottom: 7px;
+    }
+  }
+
+  .basket-product__counter {
+    display: flex;
+    align-items: center;
+    .basket-product__counter-btn {
+      display: flex;
+      align-items: center;
+      padding: 6px 8.5px;
+      background-color: map-get(map-get($mainPalette, blue), dark);
+      cursor: pointer;
+
+      svg {
+        color: map-get($mainPalette, white);
+      }
+    }
+
+    .basket-product__counter-current {
+      padding: 0 15px;
+      font-size: 16px;
+      line-height: 19px;
+      color: map-get($mainPalette, gray);
+    }
+  }
+
+  .basket-product__total {
+
+  }
+
+  .basket-product__remove {
+    display: flex;
+    align-items: center;
+    padding: 6px 8.5px;
+    background-color: map-get(map-get($mainPalette, blue), dark);
+    cursor: pointer;
+
+    svg {
+      color: map-get($mainPalette, white);
+    }
+  }
+
+  .backet__title {
+    margin-bottom: 5px;
+    font-size: 18px;
+    font-weight: 500;
+    line-height: 21px;
+    color: map-get($mainPalette, black);
+  }
+
+  .backet__value {
+    font-size: 18px;
+    line-height: 21px;
+    color: map-get($mainPalette, black);
+  }
+}

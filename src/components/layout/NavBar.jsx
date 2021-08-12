@@ -12,7 +12,7 @@ class NavBar extends Component {
       name: "Categories",
       onClick: () => {}
     }, {
-      name: "Product Card",
+      name: this.props.category,
       onClick: () => {}
     }]
   };
@@ -41,7 +41,8 @@ class NavBar extends Component {
 }
 
 NavBar.propTypes = {
-  history: PropTypes.any
+  history: PropTypes.any,
+  category: PropTypes.string
 };
 
 export default NavBar;

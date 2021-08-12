@@ -3,13 +3,18 @@ import PropTypes from 'prop-types';
 import NavBar from '../layout/NavBar';
 import Title from '../layout/Title';
 import Product from '../common/Product';
-// import { LocationService } from '../../services/LocationService';
-// import { NavigationService } from '../../services/NavigationService';
 
 class ProductCard extends Component {
   state = {
-    product: {
-      id: "7114",
+    category: "Product Card"
+  };
+
+  componentDidMount() {
+    this.loadProduct();
+  }
+
+  loadProduct = () => {
+    this.setState({product: {
       name: "Pear chair",
       description: "The pear chair is a kind of frameless furniture. "
         + "This is a pear-shaped bag chair, which can be for children and adults. "
@@ -21,14 +26,14 @@ class ProductCard extends Component {
       reviewsCount: "10",
       createdDate: "05.08.2021",
       colors: ["#76B0CC", "#328863", "#324688", "#883271"],
-      pic: require('./../../img/chair.png').default
-    }
-  };
+      url: require('./../../img/chair.png').default
+    }})
+  }
 
   render() {
     return (
       <>
-        <NavBar />
+        <NavBar category={this.state.category} />
         <Title name="Product" />
         <Product product={this.state.product} />
         <Title name="Testimonials" />

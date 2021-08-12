@@ -1,8 +1,8 @@
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-// import { LocationService } from '../../services/LocationService';
-// import { NavigationService } from '../../services/NavigationService';
+import { LocationService } from '../../services/LocationService';
+import { NavigationService } from '../../services/NavigationService';
 
 class Header extends PureComponent {
   state = {
@@ -16,11 +16,14 @@ class Header extends PureComponent {
       label: "credit"
     }],
     icons: [{
-      name: "heart"
+      name: "heart",
+      onClick: () => {}
     }, {
-      name: "shopping-cart"
+      name: "shopping-cart",
+      onClick: () => LocationService.setLocation(NavigationService.basketLink())
     }, {
-      name: "user"
+      name: "user",
+      onClick: () => {}
     }],
     isActiveToggleMenu: false,
     toggleMenuValue: 'catalog'
@@ -33,14 +36,14 @@ class Header extends PureComponent {
   setToggleMenuValue = toggleMenuValue => {
     this.setState({toggleMenuValue: toggleMenuValue}, this.handleToggleMenu)
   }
-
+  
   render() {
     return (
       <header className="header-container">
         <div className="header">
           <div className="header__left">
             <div className="header__logo">
-              <a href=" " className="header__logo-link">logo</a>
+              <a href={NavigationService.productLink()} className="header__logo-link">logo</a>
             </div>
             <ul className="header__menu">
               {this.state.navigation.map((item, itemIndex) => {
@@ -91,6 +94,7 @@ class Header extends PureComponent {
                   <span
                     key={iconIndex}
                     className="header__icon"
+                    onClick={icon.onClick}
                   >
                     <FontAwesomeIcon icon={icon.name} />
                   </span>

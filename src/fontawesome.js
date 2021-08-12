@@ -8,10 +8,13 @@ import {
   faEnvelope,
   faHeart,
   faMapMarkerAlt,
+  faMinus,
   faPhoneAlt,
+  faPlus,
   faSearch,
   faShoppingCart,
   faStar,
+  faTimes,
   faTruck,
   faUser
 } from '@fortawesome/free-solid-svg-icons';
@@ -34,10 +37,13 @@ library.add(
   faInstagram,
   faHeart,
   faMapMarkerAlt,
+  faMinus,
   faPhoneAlt,
+  faPlus,
   faSearch,
   faShoppingCart,
   faStar,
+  faTimes,
   faTruck,
   faTwitter,
   faUser
