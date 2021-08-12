@@ -42,8 +42,7 @@ class Product extends Component {
       deliveryService: this.state.deliveryService,
       addedDate: this.getCurretDate(),
       count: 1,
-      price: this.state.product.discountPrice || this.state.product.price,
-      totalPrice: this.state.product.discountPrice || this.state.product.price
+      price: this.state.product.discountPrice || this.state.product.price
     };
 
     const index = this.getProductIndexFromBasket(basketProducts, product);
@@ -215,8 +214,8 @@ class Product extends Component {
                   </div>
                 </div>
                 <div className="product__price__actions">
-                  <button className="product__price__action-btn" onClick={this.addProduct}>add to basket</button>
-                  <button className="product__price__action-btn product__price__action-btn--inverse" onClick={this.orderProducts}>Make an order</button>
+                  <button className="button" onClick={this.addProduct}>add to basket</button>
+                  <button className="button button--inverse" onClick={this.orderProducts}>Make an order</button>
                 </div>
               </div>
             </section>

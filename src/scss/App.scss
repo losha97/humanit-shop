@@ -2,7 +2,7 @@
 * @Author: Aleksiej Kuncewicz
 * @Date:   2021-08-11 10:08:26
 * @Last Modified by:   Aleksiej Kuncewicz
-* @Last Modified time: 2021-08-12 04:13:34
+* @Last Modified time: 2021-08-12 18:43:06
 */
 
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap');
@@ -11,6 +11,7 @@
 @import "utility/Mixins";
 @import "utility/Reset";
 
+@import "components/Button";
 @import "components/Basket";
 @import "components/Breadcrumbs";
 @import "components/Details";

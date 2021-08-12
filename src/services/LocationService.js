@@ -1,3 +1,10 @@
+/*
+* @Author: Aleksiej Kuncewicz
+* @Date:   2021-08-11 16:18:50
+* @Last Modified by:   Aleksiej Kuncewicz
+* @Last Modified time: 2021-08-12 18:29:44
+*/
+
 function LocationFactory() {
   function getUrlParams(search) {
     if (!search) {

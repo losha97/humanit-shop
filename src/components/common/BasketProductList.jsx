@@ -26,7 +26,7 @@ class BasketProductList extends Component {
     } else {
       products[productIndex].count--;
       BasketService.setProducts(products);
-      this.setProducts(products);
+      this.setProducts(products, () => this.props.onProductsUpdate(products));
     }
   }
 
@@ -34,11 +34,11 @@ class BasketProductList extends Component {
     let products = this.state.products;
     products[productIndex].count++;
     BasketService.setProducts(products);
-    this.setProducts(products);
+    this.setProducts(products, () => this.props.onProductsUpdate(products));
   }
 
-  setProducts = products => {
-    this.setState({products: products});
+  setProducts = (products, callback) => {
+    this.setState({products: products}, callback && callback);
   }
 
   removeProduct = productIndex => {
@@ -68,7 +68,8 @@ class BasketProductList extends Component {
 }
 
 BasketProductList.propTypes = {
-  products: PropTypes.array
+  products: PropTypes.array,
+  onProductsUpdate: PropTypes.func
 };
 
 export default BasketProductList;

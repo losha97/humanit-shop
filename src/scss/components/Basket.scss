@@ -2,20 +2,20 @@
 * @Author: Aleksiej Kuncewicz
 * @Date:   2021-08-12 04:12:57
 * @Last Modified by:   Aleksiej Kuncewicz
-* @Last Modified time: 2021-08-12 06:12:44
+* @Last Modified time: 2021-08-12 19:32:00
 */
 
 .basket {
   display: flex;
+  justify-content: space-between;
   width: 100%;
 
   .basket__list {
-    width: 60%;
-    margin-right: 30px;
+    width: calc(60% - 15px);
   }
 
   .basket__details {
-    width: 30%;
+    width: calc(30% - 15px);
   }
 }
 

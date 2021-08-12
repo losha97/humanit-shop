@@ -2,5 +2,63 @@
 * @Author: Aleksiej Kuncewicz
 * @Date:   2021-08-12 04:13:06
 * @Last Modified by:   Aleksiej Kuncewicz
-* @Last Modified time: 2021-08-12 05:08:06
+* @Last Modified time: 2021-08-12 19:30:49
 */
+
+.details-container {
+  padding: 5px 30px 30px;
+
+  .details {
+    .details__title {
+      margin-top: 25px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+
+      .details__title__name,
+      .details__title__value {        
+        font-size: 18px;
+        line-height: 21px;
+        font-weight: 500;
+        color: map-get($mainPalette, black);
+      }
+    }
+
+    .details__content {
+      margin-top: 25px;
+
+      .details__content-item {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        &:not(:last-child) {
+          margin-bottom: 20px;
+        }
+
+        .details__content-item__name,
+        .details__content-item__value {
+          font-size: 16px;
+          line-height: 19px;
+        }
+
+        .details__content-item__name {
+          color: map-get($mainPalette, black);
+        }
+
+        .details__content-item__value {
+          color: map-get($mainPalette, gray); 
+        }
+      }
+    }
+
+    .button {
+      margin-top: 25px;
+    }
+
+    &:not(:last-child) {
+      border-bottom: 1px solid  rgba(0, 0, 0, 0.3);
+      padding-bottom: 25px;
+    }
+  }
+}

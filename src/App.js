@@ -1,3 +1,10 @@
+/*
+* @Author: Aleksiej Kuncewicz
+* @Date:   2021-08-12 03:33:33
+* @Last Modified by:   Aleksiej Kuncewicz
+* @Last Modified time: 2021-08-12 18:29:54
+*/
+
 import React, { Component } from 'react';
 import { Route, BrowserRouter as Router, Switch, Redirect } from 'react-router-dom';
 import Footer from './components/layout/Footer';

@@ -1,0 +1,32 @@
+/*
+* @Author: Aleksiej Kuncewicz
+* @Date:   2021-08-12 18:40:33
+* @Last Modified by:   Aleksiej Kuncewicz
+* @Last Modified time: 2021-08-12 18:58:50
+*/
+
+.button {
+  width: 100%;
+  padding: 11px 0 10px;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 19px;
+  text-transform: uppercase;
+  border: 2px solid map-get(map-get($mainPalette, blue), dark);
+  background-color: map-get($mainPalette, white);
+  color: map-get(map-get($mainPalette, blue), dark);
+  cursor: pointer;
+
+  &.button--inverse,
+  &:hover {
+    background-color: map-get(map-get($mainPalette, blue), dark);
+    color: map-get($mainPalette, white);
+  }
+
+  &.button--inverse {
+    &:hover {
+      background-color: map-get($mainPalette, white);
+      color: map-get(map-get($mainPalette, blue), dark);
+    }
+  }
+}
