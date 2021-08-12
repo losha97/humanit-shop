@@ -36,6 +36,7 @@ class Product extends Component {
     let basketProducts = BasketService.getProducts() || [];
     let product = {
       name: this.state.product.name,
+      code: this.state.product.code,
       url: this.state.product.url,
       paymentMethod: this.state.paymentMethod,
       deliveryService: this.state.deliveryService,
@@ -45,9 +46,23 @@ class Product extends Component {
       totalPrice: this.state.product.discountPrice || this.state.product.price
     };
 
-    basketProducts.push(product);
+    const index = this.getProductIndexFromBasket(basketProducts, product);
+    
+    if (index > -1) {
+      basketProducts[index].count++; 
+    } else {
+      basketProducts.push(product);
+    }
 
     BasketService.setProducts(basketProducts);
+  }
+
+  getProductIndexFromBasket = (basketProducts, product) => {
+    return basketProducts.findIndex(basketProduct => {
+      return basketProduct.code === product.code
+          && basketProduct.paymentMethod === product.paymentMethod
+          && basketProduct.deliveryService === product.deliveryService;
+    });
   }
 
   getCurretDate = () => {
