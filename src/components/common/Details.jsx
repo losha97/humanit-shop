@@ -1,9 +1,11 @@
 import React, { Component }   from 'react';
 import PropTypes from 'prop-types';
+import Checkbox from '../element/Checkbox';
 
 class Details extends Component {
   state = {
-    details: []
+    details: [],
+    privacyCheck: false
   };
 
   componentDidMount() {
@@ -18,6 +20,10 @@ class Details extends Component {
 
   setDetails = details => {
     this.setState({details: details});
+  }
+
+  onPrivacyCheck = () => {
+    this.setState({privacyCheck: !this.state.privacyCheck});
   }
 
   render() {
@@ -65,13 +71,21 @@ class Details extends Component {
             </div>
           );
         })}
+        {this.props.hasPrivacyCheck && (
+          <Checkbox
+            label="I agree to the Privacy Policy"
+            value="I agree to the Privacy Policy"
+            handleCheckboxChange={this.onPrivacyCheck}
+          />
+        )}
       </section>
     );
   }
 }
 
 Details.propTypes = {
-  details: PropTypes.array
+  details: PropTypes.array,
+  hasPrivacyCheck: PropTypes.bool
 };
 
 export default Details;

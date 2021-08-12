@@ -87,7 +87,10 @@ class Basket extends Component {
             />
           </section>
           <section className="basket__details">
-            <Details details={this.state.details} />
+            <Details
+              details={this.state.details}
+              hasPrivacyCheck
+            />
           </section>
         </section>
       </>
