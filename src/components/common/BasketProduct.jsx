@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import classNames from 'classnames';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 class BasketProduct extends Component {
@@ -42,7 +43,10 @@ class BasketProduct extends Component {
             <span className="backet__title">{this.state.product.name}</span>
             <span className="backet__value">{this.state.product.price}</span>
           </div>
-          <div className="basket-product__additional-info">
+          <div className={classNames({
+            "basket-product__additional-info": true,
+            "basket-product__additional--visible": this.state.isMenuShown
+          })}>
             <div className="basket-product__date">
               <span className="basket-product__date-title">Added:</span>
               <span className="basket-product__date-value">{this.state.product.addedDate}</span>
@@ -69,11 +73,13 @@ class BasketProduct extends Component {
               <span className="backet__value">{this.getTotalPrice()}</span>
             </div>
           </div>
-          <div className="basket-product__arrow" onClick={this.handleArrowClick}>
-            <FontAwesomeIcon icon={this.state.isMenuShown ? "chevron-up" : "chevron-down"} />
-          </div>
-          <div className="basket-product__remove" onClick={this.props.onProductRemove}>
-            <FontAwesomeIcon icon="times" />
+          <div className="basket-product__actions">
+            <div className="basket-product__arrow" onClick={this.handleArrowClick}>
+              <FontAwesomeIcon icon={this.state.isMenuShown ? "chevron-up" : "chevron-down"} />
+            </div>
+            <div className="basket-product__remove" onClick={this.props.onProductRemove}>
+              <FontAwesomeIcon icon="times" />
+            </div>
           </div>
         </div>
       )}

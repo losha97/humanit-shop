@@ -2,7 +2,7 @@
 * @Author: Aleksiej Kuncewicz
 * @Date:   2021-08-11 22:01:47
 * @Last Modified by:   Aleksiej Kuncewicz
-* @Last Modified time: 2021-08-12 00:54:44
+* @Last Modified time: 2021-08-13 10:55:13
 */
 
 .navbar-container {
@@ -34,7 +34,7 @@
     .navbar__search__icon {
       position: absolute;
       top: 50%;
-      right: -20px;
+      right: 20px;
       transform: translateY(-50%);
       color: map-get($mainPalette, gray);
     }

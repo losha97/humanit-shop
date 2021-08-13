@@ -2,7 +2,7 @@
 * @Author: Aleksiej Kuncewicz
 * @Date:   2021-08-12 04:12:57
 * @Last Modified by:   Aleksiej Kuncewicz
-* @Last Modified time: 2021-08-12 21:11:34
+* @Last Modified time: 2021-08-13 10:54:29
 */
 
 .basket {
@@ -15,10 +15,10 @@
   }
 
   .basket__list {
-    width: calc(60% - 15px);
+    width: calc(66.6% - 15px);
 
     @include tablet {
-      width: calc(60% - 10px);
+      width: calc(66.6% - 10px);
     }
 
     @include mobile {
@@ -27,10 +27,10 @@
   }
 
   .basket__details {
-    width: calc(30% - 15px);
+    width: calc(33.3% - 15px);
 
     @include tablet {
-      width: calc(30% - 10px);
+      width: calc(33.3% - 10px);
     }
 
     @include mobile {
@@ -49,6 +49,7 @@
   padding: 25px;
 
   @include mobile {
+    width: 100%;
     padding: 15px;
   }
 
@@ -83,6 +84,7 @@
     justify-content: space-between;
 
     @include tablet {
+      display: none;
       position: absolute;
       left: 0;
       bottom: -60px;
@@ -90,14 +92,25 @@
       width: calc(100% - 30px);
       padding: 10px 15px;
       background-color: map-get(map-get($mainPalette, blue), dark);
+
+      &.basket-product__additional--visible {
+        display: flex;
+      }
     }
 
     @include mobile {
+      display: none;
       position: absolute;
       left: 0;
+      bottom: -60px;
+      z-index: 1;
       width: calc(100% - 30px);
       padding: 10px 15px;
       background-color: map-get(map-get($mainPalette, blue), dark);
+
+      &.basket-product__additional--visible {
+        display: flex;
+      }
     }
   }
 
@@ -239,6 +252,32 @@
     }
   }
 
+  .basket-product__actions {
+    display: flex;
+
+    .basket-product__remove {
+      position: relative;
+      margin-left: 41px;
+
+      &::before {
+        content: "";
+        position: absolute;
+        left: -20.5px;
+        width: 1px;
+        height: 60px;
+        background-color: rgba(0, 0, 0, 0.3);
+
+        @include tablet {
+          height: 40px;
+        }
+
+        @include mobile {
+          height: 40px;
+        }
+      }
+    }
+  }
+
   .basket-product__remove,
   .basket-product__arrow {
     display: flex;
@@ -253,6 +292,7 @@
   }
 
   .basket-product__arrow {
+    padding: 4px 7.5px;
     display: none;
 
     @include tablet {
