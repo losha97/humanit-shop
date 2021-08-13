@@ -2,7 +2,7 @@
 * @Author: Aleksiej Kuncewicz
 * @Date:   2021-08-11 10:09:23
 * @Last Modified by:   Aleksiej Kuncewicz
-* @Last Modified time: 2021-08-13 13:50:30
+* @Last Modified time: 2021-08-13 14:49:26
 */
 
 .header-container {
@@ -228,12 +228,29 @@
       }
 
       .header__icon {
+        position: relative;
         display: inline-block;
         color: map-get($mainPalette, white);
         cursor: pointer;
 
         &:not(:last-child) {
           margin-right: 36px;
+        }
+
+        .header__icon__count {
+          position: absolute;
+          top: -7px;
+          right: -20px;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          padding: 1px 4px;
+          border-radius: 10px;
+          border: 1px solid map-get($mainPalette, white);
+          font-size: 12px;
+          line-height: 14px;
+          font-weight: 500;
+          color: map-get($mainPalette, white);
         }
       }
     }

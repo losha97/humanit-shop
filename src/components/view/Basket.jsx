@@ -14,7 +14,7 @@ class Basket extends Component {
   };
 
   componentDidMount() {
-    this.setProducts(BasketService.getProducts(), this.initDetails);
+    this.setProducts(BasketService.getProducts() || [], this.initDetails);
   }
 
   initDetails = () => {

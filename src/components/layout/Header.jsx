@@ -1,10 +1,11 @@
-import React, { PureComponent } from 'react';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { BasketService } from '../../services/BasketService';
 import { LocationService } from '../../services/LocationService';
 import { NavigationService } from '../../services/NavigationService';
 
-class Header extends PureComponent {
+class Header extends Component {
   state = {
     navigation: [{
       label: "categories"
@@ -15,19 +16,40 @@ class Header extends PureComponent {
     }, {
       label: "credit"
     }],
-    icons: [{
+    icons: null,
+    isActiveToggleMenu: false,
+    toggleMenuValue: 'catalog',
+    basketProducts: []
+  };
+
+  componentDidMount() {
+    this.init();
+
+    window.addEventListener('storage', this.init);
+  }
+
+  init = () => {
+    const basketProducts = BasketService.getProducts() || [];
+    this.setState({basketProducts: basketProducts});
+
+    const count = basketProducts
+      .map(product => product.count)
+      .reduce((a, b) => a + b, 0);
+    
+    this.setState({icons: [{
       name: "heart",
+      count: 0,
       onClick: () => {}
     }, {
       name: "shopping-cart",
+      count: count,
       onClick: () => LocationService.setLocation(NavigationService.basketLink())
     }, {
       name: "user",
+      count: 0,
       onClick: () => {}
-    }],
-    isActiveToggleMenu: false,
-    toggleMenuValue: 'catalog'
-  };
+    }]});
+  }
 
   handleToggleMenu = () => {
     this.setState({isActiveToggleMenu: !this.state.isActiveToggleMenu});
@@ -96,7 +118,8 @@ class Header extends PureComponent {
               )}
             </div>
             <div className="header__icons">
-              {this.state.icons.map((icon, iconIndex) => {
+              {this.state.icons
+                && this.state.icons.map((icon, iconIndex) => {
                 return (
                   <span
                     key={iconIndex}
@@ -104,6 +127,9 @@ class Header extends PureComponent {
                     onClick={icon.onClick}
                   >
                     <FontAwesomeIcon icon={icon.name} />
+                    {!!icon.count && (
+                      <span className="header__icon__count">{icon.count}</span>
+                    )}
                   </span>
                 );
               })}
