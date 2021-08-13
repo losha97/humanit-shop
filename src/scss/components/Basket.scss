@@ -2,7 +2,7 @@
 * @Author: Aleksiej Kuncewicz
 * @Date:   2021-08-12 04:12:57
 * @Last Modified by:   Aleksiej Kuncewicz
-* @Last Modified time: 2021-08-13 10:54:29
+* @Last Modified time: 2021-08-13 13:07:09
 */
 
 .basket {
@@ -64,9 +64,10 @@
   .basket-product__pic {
     width: 60px;
     height: 60px;
+    margin-right: 5px;
 
     img {
-      width: 100%;
+      width: auto;
       height: 100%;
     }
   }

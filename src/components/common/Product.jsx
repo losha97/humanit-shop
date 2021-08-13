@@ -150,75 +150,73 @@ class Product extends Component {
                 })}
               </div>
             </div>
-            <section className="product-info">
-              <div className="product__actual product-container container-shadow">
-                <span className="product__actual-price">
-                  <span className="product__actual-price__title product-title">{this.state.product.name}</span>
-                  <span className="product__actual-price__value">{this.state.product.discountPrice}</span>
-                </span>
-                <span className="product__actual-date">
-                  <span className="product__actual-date__title">Added: </span>
-                  <span className="product__actual-date__value">{this.state.product.createdDate}</span>
-                  <FontAwesomeIcon icon="heart" className="product-icon" />
-                </span>
+            <div className="product__actual product-container container-shadow">
+              <span className="product__actual-price">
+                <span className="product__actual-price__title product-title">{this.state.product.name}</span>
+                <span className="product__actual-price__value">{this.state.product.discountPrice}</span>
+              </span>
+              <span className="product__actual-date">
+                <span className="product__actual-date__title">Added: </span>
+                <span className="product__actual-date__value">{this.state.product.createdDate}</span>
+                <FontAwesomeIcon icon="heart" className="product-icon" />
+              </span>
+            </div>
+            <div className="product__description product-container container-shadow">
+              <span className="product__description__title">Specifications:</span>
+              <span className="product__description__value">{this.state.product.description}</span>
+              <span className="product__description__title">Colors:</span>
+              <div className="product__description__colors">
+                {this.state.product.colors.map((color, colorIndex) => {
+                  return (
+                    <span
+                      key={colorIndex}
+                      style={this.getColorStyle(color)}
+                      className="product__description__color"
+                    >
+                    </span>
+                  );
+                })}
               </div>
-              <div className="product__description product-container container-shadow">
-                <span className="product__description__title">Specifications:</span>
-                <span className="product__description__value">{this.state.product.description}</span>
-                <span className="product__description__title">Colors:</span>
-                <div className="product__description__colors">
-                  {this.state.product.colors.map((color, colorIndex) => {
-                    return (
-                      <span
-                        key={colorIndex}
-                        style={this.getColorStyle(color)}
-                        className="product__description__color"
-                      >
-                      </span>
-                    );
-                  })}
-                </div>
-              </div>
-              <div className="product__price product-container container-shadow">
-                <span className="product__price__title product-title">Product price</span>
-                <div className="product__price__checkbox">
-                  <div className="product__price__checkbox-row">
-                    <span className="product__price__checkbox-row__title">Payment method:</span>
-                    <div className="product__price__checkbox-row-content">
-                      {this.state.paymentCheckboxes.map((checkbox, checkboxIndex) => {
-                        return (
-                          <Checkbox
-                            key={checkboxIndex}
-                            label={checkbox}
-                            value={this.state.paymentMethod}
-                            handleCheckboxChange={this.togglePaymentMethodCheckbox}
-                          />
-                        );
-                      })}
-                    </div>
-                  </div>
-                  <div className="product__price__checkbox-row">
-                    <span className="product__price__checkbox-row__title">Delivery service:</span>
-                    <div className="product__price__checkbox-row-content">
-                      {this.state.deliveryCheckboxes.map((checkbox, checkboxIndex) => {
-                        return (
-                          <Checkbox
-                            key={checkboxIndex}
-                            label={checkbox}
-                            value={this.state.deliveryService}
-                            handleCheckboxChange={this.toggleDeliveryServiceCheckbox}
-                          />
-                        );
-                      })}
-                    </div>
+            </div>
+            <div className="product__price product-container container-shadow">
+              <span className="product__price__title product-title">Product price</span>
+              <div className="product__price__checkbox">
+                <div className="product__price__checkbox-row">
+                  <span className="product__price__checkbox-row__title">Payment method:</span>
+                  <div className="product__price__checkbox-row-content">
+                    {this.state.paymentCheckboxes.map((checkbox, checkboxIndex) => {
+                      return (
+                        <Checkbox
+                          key={checkboxIndex}
+                          label={checkbox}
+                          value={this.state.paymentMethod}
+                          handleCheckboxChange={this.togglePaymentMethodCheckbox}
+                        />
+                      );
+                    })}
                   </div>
                 </div>
-                <div className="product__price__actions">
-                  <button className="button" onClick={this.addProduct}>add to basket</button>
-                  <button className="button button--inverse" onClick={this.orderProducts}>Make an order</button>
+                <div className="product__price__checkbox-row">
+                  <span className="product__price__checkbox-row__title">Delivery service:</span>
+                  <div className="product__price__checkbox-row-content">
+                    {this.state.deliveryCheckboxes.map((checkbox, checkboxIndex) => {
+                      return (
+                        <Checkbox
+                          key={checkboxIndex}
+                          label={checkbox}
+                          value={this.state.deliveryService}
+                          handleCheckboxChange={this.toggleDeliveryServiceCheckbox}
+                        />
+                      );
+                    })}
+                  </div>
                 </div>
               </div>
-            </section>
+              <div className="product__price__actions">
+                <button className="button" onClick={this.addProduct}>add to basket</button>
+                <button className="button button--inverse" onClick={this.orderProducts}>Make an order</button>
+              </div>
+            </div>
           </section>
         )}
       </>

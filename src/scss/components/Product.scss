@@ -2,21 +2,38 @@
 * @Author: Aleksiej Kuncewicz
 * @Date:   2021-08-12 00:38:12
 * @Last Modified by:   Aleksiej Kuncewicz
-* @Last Modified time: 2021-08-12 18:59:09
+* @Last Modified time: 2021-08-13 13:02:58
 */
 
 .product-wrapper {
   display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
   justify-content: space-between;
-  align-items: flex-start;
+  max-height: 674px;
 
-  .product,
-  .product-info {
-    width: calc((100% / 2) - 15px);
+  @include tablet {
+    position: relative;
+    margin-bottom: 120px;
+  }
+
+  @include mobile {
+    flex-wrap: nowrap;
+    flex-direction: column;
+    max-height: initial;
   }
 
   .product-container {
     padding: 25px;
+    background-color: map-get($mainPalette, white);
+
+    @include tablet {
+      padding: 25px 20px;
+    }
+
+    @include mobile {
+      padding: 10px 15px;
+    }
   }
 
   .product-title {
@@ -33,8 +50,25 @@
   .product {
     margin-right: 30px;
 
+    @include tablet {
+      margin-right: 20px;
+    }
+
+    @include mobile {
+      margin-right: 0;
+      margin-bottom: 10px;
+    }
+
     .product__pic {
       margin-bottom: 30px;
+
+      @include tablet {
+        margin-bottom: 20px;
+      }
+
+      @include mobile {
+        margin-bottom: 10px;
+      }
 
       .product__pic__header {
         display: flex;
@@ -87,13 +121,15 @@
         .product__pic__header-data-reviews-label,
         .product__pic__header-code-title {
           opacity: 0.4;
-          /*white-space: nowrap;*/
         }
       }
       
       .product__pic__main {
         position: relative;
-        /*margin: 0 65px;*/
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: 22px 0;
 
         .product__pic__main-title {
           position: absolute;
@@ -121,7 +157,7 @@
         }
 
         .product__pic__main-src {
-          width: 100%;
+          width: 66.6%;
           height: 100%;
         }
       }
@@ -132,14 +168,21 @@
       justify-content: space-between;
 
       .product__additional-pic {
-        width: calc((100% / 3) - 30px);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: calc(100% / 3);
 
         &:not(:last-child) {
           margin-right: 30px;
+
+          @include mobile {
+            margin-right: 10px;
+          }
         }
 
         .product__additional-pic-src {
-          width: 100%;
+          width: 47%;
           height: 100%;
         }
       }
@@ -150,9 +193,22 @@
 
   }
 
+  .product,
   .product__actual,
-  .product__description {
+  .product__description,
+  .product__price {
+    width: calc((100% / 2) - 15px);
     margin-bottom: 30px;
+
+    @include tablet {
+      width: calc((100% / 2) - 10px);
+      margin-bottom: 20px;
+    }
+
+    @include mobile {
+      width: 100%;
+      margin-bottom: 10px;
+    }
   }
 
   .product__actual {
@@ -163,9 +219,18 @@
       display: flex;
       align-items: center;
 
+      @include tablet {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      @include mobile {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
       .product__actual-price__title {
         margin-right: 20px;
-        white-space: nowrap;
       }
 
       .product__actual-price__value {
@@ -182,12 +247,47 @@
       line-height: 19px;
       color: map-get($mainPalette, gray);
 
+      @include tablet {
+        flex-direction: column;
+        align-items: flex-end;
+
+        .product-icon {
+          display: none;
+        }
+      }
+
+      @include mobile {
+        flex-direction: column;
+        align-items: flex-end;
+
+        .product-icon {
+          display: none;
+        }
+      }
+
       .product__actual-date__title {
         opacity: 0.4;
+        margin-right: 5px;
+
+        @include tablet {
+          margin-right: 0;
+        }
+
+        @include mobile {
+          margin-right: 0;
+        }
       }
 
       .product__actual-date__value {
         margin-right: 15px;
+
+        @include tablet {
+          margin-right: 0;
+        }
+
+        @include mobile {
+          margin-right: 0;
+        }
       }
     }
   }
@@ -204,6 +304,8 @@
     .product__description__value {
       display: inline-block;
       margin-bottom: 25px;
+      font-size: 16px;
+      line-height: 22px;
       color: map-get($mainPalette, gray);
       opacity: 0.4;
     }
@@ -223,27 +325,52 @@
   }
 
   .product__price {
+    @include mobile {
+      position: relative;
+      margin-bottom: 60px;
+
+    }
     .product__price__title {
     }
 
     .product__price__checkbox {
-      padding: 25px 0 25px;
+      display: flex;
+      flex-direction: column;
+      padding: 25px 0;
+
+      @include mobile {
+        padding: 30px 0;
+      }
 
       .product__price__checkbox-row {
         display: flex;
         justify-content: space-between;
         align-items: center;
 
+        @include mobile {
+          flex-direction: column;
+          align-items: flex-start;
+
+          &:not(:last-child) {
+            margin-bottom: 30px;
+          }
+        }
+
         .product__price__checkbox-row__title {
           font-size: 16px;
           line-height: 19px;
           color: map-get($mainPalette, gray);
+
+          @include mobile {
+            margin-bottom: 15px;
+          }
         }
 
         .product__price__checkbox-row-content {
           display: flex;
           justify-content: space-between;
           align-items: center;
+          width: 100%;
 
           .checkbox {
             display: flex;
@@ -256,6 +383,15 @@
               line-height: 19px;
               color: map-get($mainPalette, gray);
               opacity: 0.7;
+
+              @include mobile {
+                flex-direction: column-reverse;
+                align-items: flex-start;
+
+                span {
+                  margin-bottom: 5px;
+                }
+              }
             }
           }
         }
@@ -266,11 +402,32 @@
       display: flex;
       justify-content: space-between;
 
+      @include tablet {
+        position: absolute;
+        bottom: -44px;
+        left: 0;
+        width:  100%;
+      }
+
       .button {
-        width: calc((100% / 2) - 10px);
+        width: calc(100% / 2);
+
+        @include mobile {
+          width: 100%;
+
+          &:last-child {
+            position: absolute;
+            bottom: -60px;
+            left: 0;
+          }
+        }
 
         &:first-child {
           margin-right: 10px;
+
+          @include mobile {
+            margin-right: 0;
+          }
         }
       }
     }
