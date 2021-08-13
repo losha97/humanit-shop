@@ -74,6 +74,13 @@ class Header extends PureComponent {
               />
               {this.state.isActiveToggleMenu && (
                 <ul className="header__toggle-menu-items">
+                  <li
+                    className="header__toggle-menu-item"
+                    onClick={this.handleToggleMenu}
+                  >
+                    catalog
+                    <FontAwesomeIcon icon={this.state.isActiveToggleMenu ? "chevron-up" : "chevron-down"} />
+                  </li>
                   {this.state.navigation.map((item, itemIndex) => {
                     return (
                       <li

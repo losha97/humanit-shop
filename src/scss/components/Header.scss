@@ -2,10 +2,11 @@
 * @Author: Aleksiej Kuncewicz
 * @Date:   2021-08-11 10:09:23
 * @Last Modified by:   Aleksiej Kuncewicz
-* @Last Modified time: 2021-08-13 10:55:44
+* @Last Modified time: 2021-08-13 13:34:34
 */
 
 .header-container {
+  position: relative;
   display: flex;
   justify-content: space-around;
   width: 100%;
@@ -107,7 +108,6 @@
     }
 
     .header__toggle-menu {
-      position: relative;
       display: flex;
       align-items: center;
 
@@ -149,14 +149,16 @@
 
       .header__toggle-menu-items {
         position: absolute;
-        bottom: -160px;
+        top: 0;
         z-index: 2;
-        right: 60px;
-        width: 100%;
-        padding: 12px;
-        background-color: map-get($mainPalette, white);
-        border: 1px solid map-get(map-get($mainPalette, blue), dark);
-        border-radius: 3px;
+        right: 0;
+        width: calc(100% / 2);
+        padding: 60px;
+        background-color: map-get(map-get($mainPalette, blue), dark);
+
+        @include tablet {
+          width: 40%;
+        }
 
         @include mobile {
           position: fixed;
@@ -164,22 +166,52 @@
           bottom: 0;
           left: 0;
           right: 0;
+          width: 100%;
           z-index: 1;
-          border: none;
-          border-radius: 0;
-          background-color: map-get(map-get($mainPalette, blue), dark);
+          padding: 30px;
         }
 
         .header__toggle-menu-item {
-          padding: 6px 0;
+          display: flex;
+          justify-content: flex-start;
+          align-items: center;
+          width: 100%;
           font-size: 16px;
           line-height: 19px;
-          color: map-get(map-get($mainPalette, blue), dark);
-          text-transform: capitalize;
+          color: map-get($mainPalette, white);
+          text-transform: uppercase;
           cursor: pointer;
 
           @include mobile {
+            justify-content: center;
+          }
+
+          &:first-child {
+            position: relative;
+            margin-bottom: 60px !important;
+
+            &::after {
+              content: "";
+              position: absolute;
+              left: 0;
+              bottom: -30px;
+              width: 100%;
+              height: 1px;
+              background-color: map-get($mainPalette, white);
+              opacity: 0.3;
+            }
+          }
+
+          &:not(:last-child) {
+            margin-bottom: 30px;
+          }
+
+          @include mobile {
             color: map-get($mainPalette, white);
+          }
+
+          > svg {
+            margin-left: 10px;
           }
         }
       }
